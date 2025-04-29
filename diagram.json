@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "author": "jgsub0 br",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+      {
+        "type": "wokwi-pushbutton",
+        "id": "btn1",
+        "top": -89.8,
+        "left": -124.8,
+        "attrs": { "color": "green", "xray": "1", "label": "Boia Nivel", "bounce": "1", "key": "u" }
+      },
+      {
+        "type": "wokwi-led",
+        "id": "led1",
+        "top": 195.8,
+        "left": -147.2,
+        "attrs": { "color": "blue", "label": "Bomba" }
+      },
+      {
+        "type": "wokwi-ntc-temperature-sensor",
+        "id": "ntc1",
+        "top": -84.3,
+        "left": -250.1,
+        "rotate": 90,
+        "attrs": {}
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": -4.8,
+        "left": -154.15,
+        "rotate": 90,
+        "attrs": { "value": "10000" }
+      }
+    ],
+    "connections": [
+      [ "esp:TX", "$serialMonitor:RX", "", [] ],
+      [ "esp:RX", "$serialMonitor:TX", "", [] ],
+      [ "led1:C", "esp:GND.1", "black", [ "h38.4", "v-48.4", "h57.6", "v-19.2" ] ],
+      [ "led1:A", "esp:26", "orange", [ "v21.4", "h74.2", "v-144" ] ],
+      [ "ntc1:GND", "esp:GND.1", "black", [ "v0" ] ],
+      [ "ntc1:OUT", "esp:32", "green", [ "v0" ] ],
+      [ "btn1:2.r", "esp:25", "green", [ "h29", "v163.4" ] ],
+      [ "btn1:1.r", "esp:GND.2", "green", [ "h163.4", "v105.6" ] ],
+      [ "btn1:2.l", "r1:1", "green", [ "h0" ] ],
+      [ "r1:2", "esp:3V3", "green", [ "h0" ] ]
+    ],
+    "dependencies": {}
+  }
